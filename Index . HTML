@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Connexion au Système d'Appareil ⚡</title>
+    <style>
+        /* CSS : L'Ambiance de Hacker */
+        body {
+            background-color: #0d0d0d; /* Noir profond */
+            color: #00ff41; /* Vert Matrix/Hacker */
+            font-family: 'Consolas', 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+        }
+        #container {
+            border: 2px solid #00ff41;
+            padding: 40px;
+            box-shadow: 0 0 20px #00ff41;
+            max-width: 90%;
+            width: 500px;
+        }
+        h1 {
+            color: #ff0000; /* Rouge pour l'alerte initiale */
+            font-size: 1.5em;
+            text-shadow: 0 0 5px #ff0000;
+        }
+        .error {
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+        .success {
+            color: #00ff41;
+            font-size: 2em;
+            animation: blinker 1s linear infinite; /* Pour faire clignoter le message 'succès' */
+            margin-top: 20px;
+        }
+        #startButton {
+            background-color: #00ff41;
+            color: black;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        #startButton:hover {
+            background-color: #00cc33;
+        }
+        @keyframes blinker {
+            50% { opacity: 0.2; }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="main-title">ANALYSE DU NOYAU EN COURS...</h1>
+        <p id="message">Tentative de connexion au noyau de l'appareil (IP X.X.X.X). Veuillez patienter...</p>
+        
+        <div id="result" style="display:none;">
+            <h2 class="error">ÉCHEC DE L'ACCÈS MATÉRIEL (CODE 403)</h2>
+            <p>Le système a refusé l'accès direct aux fonctions hardware. Cependant...</p>
+            <h1 class="success">SIMULATION DE TORCHE ACTIVÉE ! 🔦</h1>
+            <p>La preuve de concept est établie. Je viens de tester les limites de ta sécurité !</p>
+        </div>
+        
+        <button id="startButton">LANCER LA TENTATIVE DE CONNEXION</button>
+    </div>
+
+    <script>
+        // JavaScript : L'Interaction après le clic
+        const startButton = document.getElementById('startButton');
+        const mainTitle = document.getElementById('main-title');
+        const message = document.getElementById('message');
+        const resultDiv = document.getElementById('result');
+        
+        startButton.addEventListener('click', function() {
+            // Cacher le bouton après le clic
+            startButton.style.display = 'none';
+
+            // Changer les messages pour simuler la tentative
+            mainTitle.textContent = "TENTATIVE D'INJECTION EN COURS...";
+            message.textContent = "ATTENTION : Demande d'accès direct au module camera/flash. Bypass du système de sécurité en 5s...";
+
+            // Afficher le résultat (l'illusion) après 5 secondes
+            setTimeout(function() {
+                mainTitle.style.display = 'none'; // Cacher le titre de chargement
+                message.style.display = 'none'; // Cacher le message de chargement
+                resultDiv.style.display = 'block'; // Afficher le résultat (TORCHE ACTIVÉE !)
+            }, 5000); // 5000 millisecondes = 5 secondes
+        });
+    </script>
+</body>
+</html>
