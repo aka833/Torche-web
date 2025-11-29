@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torche Web - Allumez la lumière</title>
+    <style>
+        /* CSS pour le style */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a; /* Fond sombre au départ */
+            color: white;
+            transition: background-color 0.5s, color 0.5s; /* Animation douce */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        body.light-on {
+            background-color: #f7f7f7; /* Fond clair quand la torche est allumée */
+            color: #1a1a1a;
+        }
+
+        #torch-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff9800; /* Couleur orange/jaune */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        #torch-button:hover {
+            background-color: #f57c00;
+        }
+        
+        #torch-button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <h1>Torche Web</h1>
+    <p>Cliquez sur le bouton pour allumer/éteindre la lumière de la page.</p>
+
+    <button id="torch-button">Allumer la Torche</button>
+
+    <script>
+        // JavaScript pour l'action
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const button = document.getElementById('torch-button');
+            const body = document.body;
+            let isLightOn = false;
+
+            button.addEventListener('click', () => {
+                isLightOn = !isLightOn; // Inverse l'état (true devient false, false devient true)
+                body.classList.toggle('light-on'); // Ajoute ou retire la classe CSS
+
+                if (isLightOn) {
+                    button.textContent = 'Éteindre la Torche';
+                    // Optionnel : afficher un symbole de lumière
+                    body.querySelector('h1').textContent = 'Torche Web 💡';
+                } else {
+                    button.textContent = 'Allumer la Torche';
+                    body.querySelector('h1').textContent = 'Torche Web';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
