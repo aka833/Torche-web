@@ -1,1 +1,1 @@
-Allume ta torche en une tiers
+Allume ta torche en un clic
